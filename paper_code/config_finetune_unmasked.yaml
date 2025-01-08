@@ -1,0 +1,419 @@
+---
+ model:
+   model_type: DINO
+   arch: vit_small
+   root: /home/jovyan/share/data/analyses/benjamin/DINO/CELLDEATH/crops_unmasked_small
+   data_path: /home/jovyan/share/data/analyses/benjamin/DINO/CELLDEATH/crops_unmasked_small/metadata_beactica_finetune_DINO_unmasked_sampled.csv
+   output_dir: /home/jovyan/share/data/analyses/benjamin/DINO/CELLDEATH/crops_unmasked_small/finetune_unmasked_nomask/output/
+   datatype: CellPainting
+   image_mode: normalized_5_channels
+   saveckp_freq: 10
+   batch_size_per_gpu: 20
+   num_channels: 5
+   patch_size: 16
+   epochs: 200
+   momentum_teacher: 0.996
+   center_momentum: 0.9
+   sample_single_cells: False
+   lr: 0.0005
+   local_crops_scale: '0.05 0.4'
+
+ embedding:
+   pretrained_weights: /home/jovyan/share/data/analyses/benjamin/DINO/CELLDEATH/crops_unmasked_small/finetune_unmasked_nomask/output/checkpoint.pth
+   output_path: /home/jovyan/share/data/analyses/benjamin/DINO/CELLDEATH/crops_unmasked_small/finetune_unmasked_nomask/output/features_small.pth
+   df_path: /home/jovyan/share/data/analyses/benjamin/DINO/CELLDEATH/crops_unmasked_small/metadata_beactica_finetune_DINO_unmasked_sampled.csv
+   image_size: 224
+   num_workers: 20
+   embedding_has_labels: False
+   target_labels: False
+
+ flip_and_color_jitter_transforms: 
+   RandomRotation: 
+    - False
+    - {degrees: 90, expand: False}
+   RandomHorizontalFlip: 
+    - True
+    - {p: 0.5}
+   RandomVerticalFlip:
+    - True
+    - {p: 0.5}
+   Change_brightness: 
+    - True
+    - {p: 0.5}
+   Change_contrast:
+    - True
+    - {p: 0.5}
+   GaussianBlur: 
+    - False
+    - {p: 1.0}
+   ColorJitter:
+    - False
+    - {brightness: 0.4, contrast: 0.4, saturation: 0.2, hue: 0.1}
+   ColorJitter_for_RGBA:
+    - False
+    - {brightness: 0.4, contrast: 0.4, saturation: 0.2, hue: 0.1}
+ normalization:
+   Get_specific_channel: # nucleus_only
+    - False
+    - {c: 0}
+   Get_specific_channel: # protein_only
+    - False
+    - {c: 1}
+   Get_specific_channel: # cyto_only
+    - False
+    - {c: 2}
+   Get_specific_channel: # ER_only
+    - False
+    - {c: 3}
+   ToTensor: 
+    - True
+    - # no params
+   Normalize: 
+    - False
+    - {mean: [0.1450534, 0.11360057, 0.1231717, 0.14919987], std: [0.18122554, 0.14004277, 0.18840286, 0.17790672]}
+   self_normalize: 
+    - True
+    - # no params
+ # --- Global crops 1 ---: 
+ global_transfo1:
+   Warp_cell:
+    - True
+    - # no params
+   Single_cell_centered:
+    - False
+    - # no params
+   Single_cell_random_resize:
+    - False
+    - # no params
+   FA_resize:
+    - False
+    - {size: 512}
+   Single_cell_Resize:
+    - True
+    - # no params
+   Single_cell_Mirror: 
+    - False
+    - # no params
+   remove_channel:
+    - True
+    - {p: 0.2}
+   rescale_protein:
+    - True
+    - {p: 0.2}
+   RandomResizedCrop:
+    - True
+    - {size: 125, scale: [0.4, 1]}
+   Threshold_protein: 
+    - False
+    - {p: 0.8, interpolation: Image.BICUBIC}
+   RandomResizedCenterCrop:
+    - False
+    - {size: 125, scale: [0.5, 1], depth: 1e6, s: 0.7}
+ global_aug1:
+   GaussianBlur:
+    - False
+    - {p: 1.0}
+   Solarization:
+    - False
+    - {p: 0.2}
+   Solarization_for_RGBA:
+    - False
+    - {p: 0.2}
+   rnd_dihedral:
+    - False
+    - # no params
+ testing_transfo:
+   Single_cell_centered:
+    - False
+    - # no params
+   Single_cell_random_resize:
+    - False
+    - # no params
+   FA_resize:
+    - False
+    - {size: 512}
+   Single_cell_Resize:
+    - False
+    - # no params
+   Single_cell_Mirror: 
+    - False
+    - # no params
+   Get_specific_channel:
+    - False
+    - {c: 0}
+   Get_specific_channel:
+    - False
+    - {c: 1}
+   Get_specific_channel:
+    - False
+    - {c: 2}
+   Get_specific_channel:
+    - False
+    - {c: 3}
+   ToTensor: 
+    - True
+    - # no params
+   Normalize: 
+    - False
+    - {mean: [0.1450534, 0.11360057, 0.1231717, 0.14919987], std: [0.18122554, 0.14004277, 0.18840286, 0.17790672]}
+   self_normalize: 
+    - True
+    - # no params
+ # --- Global crops 2 ---: 
+ global_transfo2:
+   Warp_cell:
+    - True
+    - # no params
+   Single_cell_centered:
+    - False
+    - # no params
+   Single_cell_random_resize:
+    - False
+    - # no params
+   FA_resize:
+    - False
+    - {size: 512}
+   Single_cell_Resize:
+    - False
+    - # no params
+   Single_cell_Mirror: 
+    - False
+    - # no params
+   remove_channel:
+    - True
+    - {p: 0.2}
+   rescale_protein:
+    - True
+    - {p: 0.2}
+   RandomResizedCrop:
+    - True
+    - {size: 224, scale: [0.4, 1]}
+   Threshold_protein: 
+    - False
+    - {p: 0.8, interpolation: Image.BICUBIC}
+   RandomResizedCenterCrop:
+    - False
+    - {size: 224, scale: [0.4, 1], depth: 1e6, s: 0.7}
+ global_aug2:
+   GaussianBlur:
+    - False
+    - {p: 1.0}
+   Solarization:
+    - False
+    - {p: 0.2}
+   Solarization_for_RGBA:
+    - False
+    - {p: 0.2}
+   rnd_dihedral:
+    - False
+    - # no params
+ # --- Local crops ---: 
+ local_crops_number: 8 
+ local_transfo:
+   Warp_cell:
+    - True
+    - # no params
+   Single_cell_centered:
+    - False
+    - # no params
+   Single_cell_random_resize:
+    - False
+    - # no params
+   FA_resize:
+    - False
+    - {size: 512}
+   Single_cell_Resize:
+    - False
+    - # no params
+   Single_cell_Mirror: 
+    - False
+    - # no params
+   remove_channel:
+    - True
+    - {p: 0.2}
+   rescale_protein:
+    - True
+    - {p: 0.2}
+   RandomResizedCrop:
+    - True
+    - {size: 96, scale: [0.05, 0.4]}
+   Threshold_protein: 
+    - False
+    - {p: 0.8, interpolation: Image.BICUBIC}
+   RandomResizedCenterCrop:
+    - False
+    - {size: 96, scale: [0.2, 0.5], depth: 1e6, s: 0.7}
+ local_aug:
+   GaussianBlur:
+    - False
+    - {p: 1.0}
+   rnd_dihedral:
+    - False
+    - # no params
+
+
+ # --- Global crops 1 ---: 
+ global_transfo1:
+   Warp_cell:
+    - True
+    - # no params
+   Single_cell_centered:
+    - False
+    - # no params
+   Single_cell_random_resize:
+    - False
+    - # no params
+   FA_resize:
+    - False
+    - {size: 512}
+   Single_cell_Resize:
+    - False
+    - # no params
+   Single_cell_Mirror: 
+    - False
+    - # no params
+   remove_channel:
+    - False
+    - {p: 0.2}
+   RandomResizedCrop:
+    - True
+    - {size: 224, scale: [0.4, 1]}
+   RandomResizedCenterCrop:
+    - False
+    - {size: 224, scale: [0.5, 1], depth: 1e6, s: 0.7}
+
+ global_aug1:
+   GaussianBlur:
+    - False
+    - {p: 1.0}
+   Solarization:
+    - False
+    - {p: 0.2}
+   Solarization_for_RGBA:
+    - False
+    - {p: 0.2}
+   rnd_dihedral:
+    - False
+    - # no params
+
+ testing_transfo:
+   Single_cell_centered:
+    - False
+    - # no params
+   Single_cell_random_resize:
+    - False
+    - # no params
+   FA_resize:
+    - False
+    - {size: 512}
+   Single_cell_Resize:
+    - False
+    - # no params
+   Single_cell_Mirror: 
+    - False
+    - # no params
+   Get_specific_channel:
+    - False
+    - {c: 0}
+   Get_specific_channel:
+    - False
+    - {c: 1}
+   Get_specific_channel:
+    - False
+    - {c: 2}
+   Get_specific_channel:
+    - False
+    - {c: 3}
+   ToTensor: 
+    - True
+    - # no params
+   Normalize: 
+    - False
+    - {mean: [0.1450534, 0.11360057, 0.1231717, 0.14919987], std: [0.18122554, 0.14004277, 0.18840286, 0.17790672]}
+   self_normalize: 
+    - True
+    - # no params
+
+ #  --- Global crops 2 ---: 
+ global_transfo2:
+   Warp_cell:
+    - False
+    - # no params
+   Single_cell_centered:
+    - False
+    - # no params
+   Single_cell_random_resize:
+    - False
+    - # no params
+   FA_resize:
+    - False
+    - {size: 512}
+   Single_cell_Resize:
+    - False
+    - # no params
+   Single_cell_Mirror: 
+    - False
+    - # no params
+   remove_channel:
+    - True
+    - {p: 0.2}
+   RandomResizedCrop:
+    - True
+    - {size: 224, scale: [0.4, 1]}
+   RandomResizedCenterCrop:
+    - False
+    - {size: 224, scale: [0.4, 1], depth: 1e6, s: 0.7}
+
+ global_aug2:
+   GaussianBlur:
+    - False
+    - {p: 1.0}
+   Solarization:
+    - False
+    - {p: 0.2}
+   Solarization_for_RGBA:
+    - False
+    - {p: 0.2}
+   rnd_dihedral:
+    - False
+    - # no params
+
+
+ # --- Local crops ---: 
+ local_crops_number: 8 
+ local_transfo:
+   Warp_cell:
+    - False
+    - # no params
+   Single_cell_centered:
+    - False
+    - # no params
+   Single_cell_random_resize:
+    - False
+    - # no params
+   FA_resize:
+    - False
+    - {size: 512}
+   Single_cell_Resize:
+    - False
+    - # no params
+   Single_cell_Mirror: 
+    - False
+    - # no params
+   remove_channel:
+    - True
+    - {p: 0.2}
+   RandomResizedCrop:
+    - True
+    - {size: 96, scale: [0.05, 0.4]}
+   RandomResizedCenterCrop:
+    - False
+    - {size: 96, scale: [0.2, 0.5], depth: 1e6, s: 0.7}
+
+ local_aug:
+   GaussianBlur:
+    - False
+    - {p: 1.0}
+   rnd_dihedral:
+    - False
+    - # no params
