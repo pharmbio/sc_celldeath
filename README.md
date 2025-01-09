@@ -35,7 +35,7 @@ The repository is structured to facilitate reproducibility and includes scripts 
 
 ## DINO Training  
 
-For DINO training, we adapted the codebase from [DINO4Cells](https://github.com/broadinstitute/DINO4Cells_code). Please refer to their repository for detailed instructions.
+For DINO training, we adapted the codebase from [DINO4Cells](https://github.com/broadinstitute/DINO4Cells_code). Please refer to their repository for detailed instructions. The checkpoints to our model can found in [add FigShare].
 
 ---
 
