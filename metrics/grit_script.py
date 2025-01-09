@@ -1,3 +1,5 @@
+#Grit calculation script, main functions from https://github.com/cytomining/cytominer-eval
+
 from typing import List, Union
 import pandas.api.types as ptypes
 import pandas as pd
