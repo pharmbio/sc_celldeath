@@ -11,8 +11,6 @@ import re
 import numpy as np 
 import pandas as pd
 
-PROJECT_DIR = "/home/jovyan/share/data/analyses/benjamin/Single_cell_project_rapids/Beactica"
-
 @click.command()
 @click.option('--input', '-i', 'input_dir', required=True, help='Input directory path merged with project root.')
 @click.option('--output', '-o', 'output_file', required=False, help='Output file name (or directory).')
