@@ -29,7 +29,7 @@ The repository is structured to facilitate reproducibility and includes scripts 
 
 - **`config/`**  
   Configuration files for reproducibility.  
-  - `config_finetune_unmasked.yaml`: Configuration for fine-tuning DINO models.
+  - `config_finetune_unmasked.yaml`: Configuration for training DINO models. Note: We do not provide all imaging data here.
 
 ---
 
