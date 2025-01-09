@@ -50,7 +50,7 @@ def basic_analysis(input_dir, output_file, compound_col, sample_size, permut_num
     #}
     #df2['significant_adj'] = df2['significant_adj'].map(bool_map).astype(bool)
  
-    df.to_csv(f"etest_res_specs5k_{sample_size}_samples_{permut_num}_perms.csv")
+    df.to_csv(f"etest_res_{sample_size}_samples_{permut_num}_perms.csv")
 
 if __name__ == "__main__":
     basic_analysis()
