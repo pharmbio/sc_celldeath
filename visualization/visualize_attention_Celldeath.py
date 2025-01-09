@@ -11,6 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+# Changes made: Added adjusted data loader and fold_channel functions to work with custom input. 
 import os
 import sys
 import argparse
