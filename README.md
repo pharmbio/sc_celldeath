@@ -4,6 +4,8 @@ This repository contains analysis scripts for the paper *"Single-cell morphologi
 
 The repository is structured to facilitate reproducibility and includes scripts for supervised and unsupervised analysis, calculation of key metrics, and generation of publication figures.
 
+![Figure 1: Workflow overview for the work in the above paper](workflow_only.png)
+
 ---
 
 ## Repository Structure  
