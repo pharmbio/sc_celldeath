@@ -48,7 +48,7 @@ To obtain representative cell images shown in Fig. 3, Suppl. Fig. S5–S7, S9, S
 ---
 
 ## Data Availability
-Processed data and extracted features can be found in [add FigShare]
+Extracted features can be found in [add FigShare]. Provided are normalised profiles. Aggregation and analysis steps can be found in the scripts. Grit scores and e-distance result can be found on FigShare.
 
 ## Citation
 If you use this code or data, please cite:
