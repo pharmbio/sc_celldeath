@@ -12,7 +12,7 @@ The repository is structured to facilitate reproducibility and includes scripts 
 
 - **`supervised/`**  
   Contains scripts for supervised classification tasks using single-cell and aggregated profiles.  
-  - `Supervised_analysis.ipynb`: Jupyter notebook for training supervised models.  
+  - `Supervised_analysis.ipynb`: Jupyter notebook for evaluation of supervised models.  
   - `autogluon_classifier_celldeath.py`: Script for model training using AutoGluon.  
 
 - **`unsupervised/`**  
