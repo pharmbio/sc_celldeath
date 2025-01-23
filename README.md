@@ -1,6 +1,6 @@
 # Single-Cell Morphological Profiling Reveals Insights into Cell Death  
 
-This repository contains analysis scripts for the paper *"Single-cell morphological profiling reveals insights into cell death"* ([Add Link to Paper]).  
+This repository contains analysis scripts for the paper *"Single-cell morphological profiling reveals insights into cell death"* (https://www.biorxiv.org/content/10.1101/2025.01.15.633042v1).  
 
 The repository is structured to facilitate reproducibility and includes scripts for supervised and unsupervised analysis, calculation of key metrics, and generation of publication figures.
 
